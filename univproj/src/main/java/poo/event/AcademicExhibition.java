@@ -1,31 +1,48 @@
 package poo.event;
 
-import java.util.ArrayList;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Scanner;
 
 public class AcademicExhibition extends Event  {
-    private ArrayList<String> stands;
-    private ArrayList<String> professor;
+    private String stands;    
     
-    public AcademicExhibition(String title, Date date, String local, int maxCapacity, String description, int type, Integer id){
+    public AcademicExhibition(String title, Date date, String local, int maxCapacity, String description, int type, Integer id, String stands) {
         super(title, date, local, maxCapacity, description, type, id);
-        this.stands = new ArrayList<>();
-        this.professor = new ArrayList<>();
+        this.stands = stands;
+        
+    }    
+    public static AcademicExhibition CollectData(Integer id, Scanner sc){        
+        sc.nextLine();
+        System.out.println("Enter the name of the Academic Exhibition:\n");
+        String exhibitionName = sc.next();
+        System.out.println("Enter the date of the Academic Exhibition (dd/mm/yyyy):\n");
+        String date = sc.next(); 
+        Date exhibitionDate;
+        try {
+            exhibitionDate = new SimpleDateFormat("dd/MM/yyyy").parse(date);
+        } catch (ParseException e) {
+            System.out.println("Invalid date format. Please use dd/mm/yyyy.");
+            exhibitionDate = new Date();
+        }
+        System.out.println("Enter the location of the Academic Exhibition:\n");
+        String exhibitionLocation = sc.next();
+        System.out.println("Enter the description of the Academic Exhibition:\n");
+        String exhibitionDescription = sc.next();
+        System.out.println("Enter the maximum capacity of the Academic Exhibition:\n");
+        int exhibitionCapacity = sc.nextInt();
+        System.out.println("Enter the stands of the Academic Exhibition (comma separated):\n");
+        String exhibitionStands = sc.next();
+        return new AcademicExhibition(exhibitionName, exhibitionDate, exhibitionLocation, exhibitionCapacity, exhibitionDescription, 1, id, exhibitionStands);
     }
-
-    public ArrayList<String> getStands() {
+    
+    public String getStands() {
         return stands;
     }
 
-    public void setStands(ArrayList<String> stands) {
+    public void setStands(String stands) {
         this.stands = stands;
     }
 
-    public ArrayList<String> getProfessor() {
-        return professor;
-    }
-
-    public void setProfessor(ArrayList<String> professor) {
-        this.professor = professor;
-    }
 }

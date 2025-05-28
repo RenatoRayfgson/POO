@@ -6,17 +6,14 @@ public abstract class Participant {
     protected String cpf;
     protected Integer id;
     protected int type; //1 - Guest, 2 - Professor, 3 - Student
+    protected int modality; //Presential or Online (I still have to introduce this in constructors and supers)
 
     public Participant(String name, String email, String cpf, int type){
         this.name = name;
         this.email = email;
         this.cpf = cpf;
         this.type = type;
-    }
-
-    public void register(){
-
-    }
+    }    
 
     public String getName() {
         return name;
