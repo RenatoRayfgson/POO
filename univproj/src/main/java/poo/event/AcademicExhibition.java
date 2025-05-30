@@ -12,7 +12,12 @@ public class AcademicExhibition extends Event  {
         super(title, date, local, maxCapacity, description, type, id);
         this.stands = stands;
         
-    }    
+    }
+    
+    public AcademicExhibition() {
+        // Default constructor
+    }
+        
     public static AcademicExhibition CollectData(Integer id, Scanner sc){        
         sc.nextLine();
         System.out.println("Enter the name of the Academic Exhibition:\n");

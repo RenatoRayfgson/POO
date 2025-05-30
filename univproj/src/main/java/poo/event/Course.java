@@ -11,7 +11,9 @@ public class Course extends Event {
     @SuppressWarnings("FieldMayBeFinal")
     private String professor;
 
-    
+    public Course(){
+        
+    }
     public Course(String title, Date date, String local, int maxCapacity, String description, int type, String professor, int hours, Integer id){
         super(title, date, local, maxCapacity, description, type, id);
         this.hours = hours;

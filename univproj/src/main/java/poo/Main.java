@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 import poo.event.AcademicExhibition;
 import poo.event.Course;
+import poo.event.Lecture;
+import poo.event.Workshop;
 import static poo.menu.Menus.EventsMenu;
 import static poo.menu.Menus.menu;
 import poo.service.EventManager;
@@ -43,14 +45,26 @@ public class Main {
                                 }
                                 case 3:{
                                     //Create Lecture
+                                    EventManager eventManager = new EventManager();
+                                    Integer currentId = EventManager.getId();
+                                    Lecture lecture = Lecture.CollectData(currentId, sc);
+                                    eventManager.CreateEvent(lecture);
+                                    System.out.println("Lecture was registered successfully!");
                                     break;
                                 }
                                 case 4:{
                                     //Workshop
+                                    EventManager eventManager = new EventManager();
+                                    Integer currentId = EventManager.getId();
+                                    Workshop workshop = Workshop.CollectData(currentId, sc);
+                                    eventManager.CreateEvent(workshop);
+                                    System.out.println("Workshop was registered successfully!");
                                     break;
                                 }
                                 case 5:{
-                                    //List Events
+                                    //List all events registered
+                                    System.out.println("Listing all registered events:");
+                                    EventManager.list();
                                     break;
                                 }
                                 case 0:

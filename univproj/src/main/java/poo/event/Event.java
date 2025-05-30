@@ -13,6 +13,10 @@ public abstract class Event {
     protected Integer id;     
     protected ArrayList<Integer> participants;
     protected int type; // 1 - AcademicExhibition, 2 - Course, 3 - Lecture, 4 - Workshop
+
+    public Event(){
+        
+    }
     
     public Event(String title, Date date, String local, int maxCapacity, String description, int type, Integer id) {
         this.title = title;
@@ -24,11 +28,27 @@ public abstract class Event {
         this.type = type;
         this.id = id;                
     }
+
+    public static void listEvents(){
+        
+    }
     
     //Criar método abstrato que liste os eventos ou qualquer coisa do tipo
     //public abstract void listEventDetails(); //Isso pode retornar os dados gerais em eventos e depois cada evento pode sobrescrever esse método para retornar os dados específicos
 
     public Integer getId() {
         return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public String getLocal() {
+        return local;
     }
 }

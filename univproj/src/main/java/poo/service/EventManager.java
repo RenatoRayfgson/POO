@@ -20,7 +20,10 @@ public class EventManager {
         id++;
     }
     
-    public static List<Event> display(){
+    public static List<Event> list(){
+        for(Event e : event){ 
+            System.out.println("Event ID: " + e.getId() + " Title: " + e.getTitle() + " Date: " + e.getDate() + " Local: " + e.getLocal());
+        }
         return event;
     }
     

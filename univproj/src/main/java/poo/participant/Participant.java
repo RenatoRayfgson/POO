@@ -13,7 +13,12 @@ public abstract class Participant {
         this.email = email;
         this.cpf = cpf;
         this.type = type;
-    }    
+    } 
+
+    public Participant() {
+        // Default constructor
+    }   
+    
 
     public String getName() {
         return name;
@@ -41,3 +46,5 @@ public abstract class Participant {
 
     
 }
+
+//coleta o cpf > se for invalido > entra em loop > pede novamente > verifica novamente > se for valido, continua > se nao for, loop dnv
