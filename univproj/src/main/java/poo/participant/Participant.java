@@ -8,11 +8,12 @@ public abstract class Participant {
     protected int type; //1 - Guest, 2 - Professor, 3 - Student
     protected int modality; //Presential or Online (I still have to introduce this in constructors and supers)
 
-    public Participant(String name, String email, String cpf, int type){
+    public Participant(String name, String email, String cpf, int type, int modality, Integer id){
         this.name = name;
         this.email = email;
         this.cpf = cpf;
         this.type = type;
+        this.modality = modality;
     } 
 
     public Participant() {
@@ -42,6 +43,10 @@ public abstract class Participant {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     

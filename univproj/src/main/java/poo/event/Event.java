@@ -29,9 +29,10 @@ public abstract class Event {
         this.id = id;                
     }
 
-    public static void listEvents(){
-        
+    public void addParticipant(Integer participantId) {
+        participants.add(participantId);
     }
+
     
     //Criar método abstrato que liste os eventos ou qualquer coisa do tipo
     //public abstract void listEventDetails(); //Isso pode retornar os dados gerais em eventos e depois cada evento pode sobrescrever esse método para retornar os dados específicos
@@ -50,5 +51,13 @@ public abstract class Event {
 
     public String getLocal() {
         return local;
+    }
+
+    public ArrayList<Integer> getParticipants() {
+        return participants;
+    }
+
+    public int getMaxCapacity() {
+        return maxCapacity;
     }
 }

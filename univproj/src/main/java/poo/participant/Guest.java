@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class Guest extends Participant  {
     private String origin;
 
-    public Guest(String name, String email, String cpf, int type, String origin){
-        super(name, email, cpf, type);
+    public Guest(String name, String email, String cpf, int type, String origin, int modality, Integer id) {
+        super(name, email, cpf, type, modality, id);
         this.origin = origin;
     }
 

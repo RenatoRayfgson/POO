@@ -6,8 +6,7 @@ import poo.event.AcademicExhibition;
 import poo.event.Course;
 import poo.event.Lecture;
 import poo.event.Workshop;
-import static poo.menu.Menus.EventsMenu;
-import static poo.menu.Menus.menu;
+import poo.menu.Menus;
 import poo.service.EventManager;
 
 //itextpdf
@@ -17,12 +16,12 @@ public class Main {
     public static void main(String args[]){
         try (Scanner sc = new Scanner(System.in)) {
             while(option != 0){
-                menu();
+                Menus.menu();
                 try {
                     option = sc.nextInt();
                     switch(option){
                     case 1:{
-                            EventsMenu();
+                            Menus.EventsMenu();
                             int eventOption = sc.nextInt();
                             switch(eventOption){
                                 case 1:{
@@ -75,7 +74,53 @@ public class Main {
                             }
                         break;
                     }
-                    case 2:{
+                    case 2:{                        
+                        Menus.SignParticipantMenu();
+                        int modalityOption = sc.nextInt();
+                        switch(modalityOption){
+                            case 1:{
+
+                                break;
+                            }
+                            case 2:{
+                                Menus.SignPresentialParticipantMenu();
+                                int participantOption = sc.nextInt();
+                                switch(participantOption){
+                                    case 1:{
+                                        //Sign online guest to event
+                                        System.out.println("Sign online guest to event");
+                                        break;
+                                    }
+                                    case 2:{
+                                        //Sign presential professor to event
+                                        System.out.println("Sign online professor to event");
+                                        break;
+                                    }
+                                    case 3:{
+                                        //Sign presential student to event
+                                        System.out.println("Sign online student to event");
+                                        break;
+                                    }
+                                    case 0:{
+                                        //Back to Main Menu
+                                        break;
+                                    }
+                                    default:
+                                        System.out.println("Invalid option, try again.");
+                                }
+                                break;
+                            }
+                            case 3:{
+                                //List participants in event
+                                break;
+                            }
+                            case 0:{
+                                //Back to Main Menu
+                                break;
+                            }
+                            default:
+                                System.out.println("Invalid option, try again.");
+                        }
                         //Sign participant to event
                         break;
                     }

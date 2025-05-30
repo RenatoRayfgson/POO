@@ -10,15 +10,15 @@ public class EventManager {
     private static List<Event> event;
     private static Integer id=1;
 
+    public void CreateEvent(Event e) {        
+        event.add(e);
+        id++;
+    }
     
     public EventManager(){
         event = new ArrayList<>();
     }
     
-    public void CreateEvent(Event e) {        
-        event.add(e);
-        id++;
-    }
     
     public static List<Event> list(){
         for(Event e : event){ 
