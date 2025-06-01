@@ -8,6 +8,8 @@ import poo.event.Lecture;
 import poo.event.Workshop;
 import poo.menu.Menus;
 import poo.participant.Guest;
+import poo.participant.OnlineGuest;
+import poo.participant.OnlineProfessor;
 import poo.participant.OnlineStudent;
 import poo.participant.Professor;
 import poo.participant.Student;
@@ -30,6 +32,7 @@ public class Main {
                     case 1:{
                             Menus.EventsMenu();
                             int eventOption = sc.nextInt();
+                            //EVENT CRIATION
                             switch(eventOption){
                                 case 1:{
                                     //Create Academic Exhibition                                    
@@ -89,12 +92,31 @@ public class Main {
                                 Menus.SignOnlineParticipantMenu();
                                 int participantOption = sc.nextInt();
                                 switch(participantOption){
+                                    //PARTICIPATION CRIATION AND SIGNING
                                     case 1:{
                                         //Sign online guest to event
+                                        ParticipantManager participantManager = new ParticipantManager();                                        
+                                        OnlineGuest onlineGuest = participantManager.CreateGuestOnline(sc);                                        
+                                        Integer eventId = EventManager.CollectId(sc);
+                                        boolean sucess = participantManager.addParticipantToEvent(eventId, onlineGuest);
+                                        if(sucess){
+                                            System.out.println("Online guest was signed successfully to the event.");
+                                        } else {
+                                            System.out.println("Failed to sign online guest to the event.");
+                                        }                                        
                                         break;
                                     }
                                     case 2:{
                                         //Sign online professor to event
+                                        ParticipantManager participantManager = new ParticipantManager();                                        
+                                        OnlineProfessor onlineProfessor = participantManager.CreateProfessorOnline(sc);                                        
+                                        Integer eventId = EventManager.CollectId(sc);
+                                        boolean sucess = participantManager.addParticipantToEvent(eventId, onlineProfessor);
+                                        if(sucess){
+                                            System.out.println("Online professor was signed successfully to the event.");
+                                        } else {
+                                            System.out.println("Failed to sign online professor to the event.");
+                                        }                                        
                                         break;
                                     }
                                     case 3:{
@@ -104,7 +126,7 @@ public class Main {
                                         Integer eventId = EventManager.CollectId(sc);
                                         boolean sucess = participantManager.addParticipantToEvent(eventId, onlineStudent);
                                         if(sucess){
-                                            System.out.println("Student was signed successfully to the event.");
+                                            System.out.println("Online Student was signed successfully to the event.");
                                         } else {
                                             System.out.println("Failed to sign online student to the event.");
                                         }                                        
@@ -173,6 +195,9 @@ public class Main {
                             }
                             case 3:{
                                 //List participants in event
+                                System.out.println("Enter the ID of the event you want to list participants: ");
+                                int eventId = sc.nextInt();
+                                EventManager.ListParticipantsByEvent(eventId);
                                 break;
                             }
                             case 0:{
@@ -181,8 +206,7 @@ public class Main {
                             }
                             default:
                                 System.out.println("Invalid option, try again.");
-                        }
-                        //Sign participant to event
+                        }                        
                         break;
                     }
                     case 3:{

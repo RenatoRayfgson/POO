@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 import poo.event.Event;
 import poo.participant.Guest;
+import poo.participant.OnlineGuest;
+import poo.participant.OnlineProfessor;
 import poo.participant.OnlineStudent;
 import poo.participant.Participant;
 import poo.participant.Professor;
@@ -57,15 +59,15 @@ public class ParticipantManager {
     }
 
     public OnlineStudent CreateStudentOnline(Scanner sc){
-        return OnlineStudent.collectDataOnline(sc, id++);      //Mexer aqui!!
+        return OnlineStudent.collectDataOnline(id++, sc);      //Fix here!!
     }
     
-    public Professor CreateProfessorOnline(Scanner sc){
-        return Professor.collectDataPresential(id++, sc);    //Mexer aqui!!
+    public OnlineProfessor CreateProfessorOnline(Scanner sc){
+        return OnlineProfessor.collectDataOnline(id++, sc);    //Fix here!!
     }
     
-    public Guest CreateGuestOnline(Scanner sc){
-        return Guest.collectDataPresential(id++, sc);        //Mexer aqui!!
+    public OnlineGuest CreateGuestOnline(Scanner sc){
+        return OnlineGuest.collectDataOnline(id++, sc);        //Fix here!!
     }
     
     /*public Guest CreateGuestPresential(Scanner sc){

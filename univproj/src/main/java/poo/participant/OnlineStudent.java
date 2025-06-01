@@ -21,7 +21,7 @@ public class OnlineStudent extends Student {
         this.telephone = telephone;
     }
 
-    public static OnlineStudent collectDataOnline(Scanner sc, Integer id) {
+    public static OnlineStudent collectDataOnline(Integer id, Scanner sc) {
         System.out.println("Do you agree to the following terms of online participation?\nKeep microphone muted\nDo not share or record the screen\nDo not share the link with others");
         System.out.println("[1] Yes\n[2] No");
         int choice = sc.nextInt();
