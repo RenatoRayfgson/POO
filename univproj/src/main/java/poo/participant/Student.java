@@ -47,7 +47,7 @@ public class Student extends Participant  {
             System.out.println("Invalid matriculation. Please enter a valid matriculation (only digits):\n");
             studentMatriculation = sc.nextLine();
         }
-        return new Student(studentName, studentEmail, studentCpf, 3, studentMatriculation, 1, id);        
+        return new Student(studentName, studentEmail, studentCpf, 3, studentMatriculation, 2, id);        
     }  
   
 }

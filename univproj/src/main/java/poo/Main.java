@@ -7,7 +7,13 @@ import poo.event.Course;
 import poo.event.Lecture;
 import poo.event.Workshop;
 import poo.menu.Menus;
+import poo.participant.Guest;
+import poo.participant.Professor;
+import poo.participant.Student;
 import poo.service.EventManager;
+import poo.service.ParticipantManager;
+
+
 
 //itextpdf
 public class Main {    
@@ -79,7 +85,28 @@ public class Main {
                         int modalityOption = sc.nextInt();
                         switch(modalityOption){
                             case 1:{
-
+                                Menus.SignOnlineParticipantMenu();
+                                int participantOption = sc.nextInt();
+                                switch(participantOption){
+                                    case 1:{
+                                        //Sign online guest to event
+                                        break;
+                                    }
+                                    case 2:{
+                                        //Sign online student to event
+                                        break;
+                                    }
+                                    case 3:{
+                                        //Sign online professor to event
+                                        break;
+                                    }
+                                    case 0:{
+                                        //Back to Main Menu
+                                        break;
+                                    }
+                                    default:
+                                        System.out.println("Invalid option, try again.");
+                                }
                                 break;
                             }
                             case 2:{
@@ -88,17 +115,41 @@ public class Main {
                                 switch(participantOption){
                                     case 1:{
                                         //Sign online guest to event
-                                        System.out.println("Sign online guest to event");
+                                        ParticipantManager participantManager = new ParticipantManager();                                        
+                                        Guest guest = participantManager.CreateGuestPresential(sc);                                        
+                                        Integer eventId = EventManager.CollectId(sc);
+                                        boolean sucess = participantManager.addParticipantToEvent(eventId, guest);
+                                        if(sucess){
+                                            System.out.println("Guest was signed successfully to the event.");
+                                        } else {
+                                            System.out.println("Failed to sign the guest to the event.");
+                                        }                                        
                                         break;
                                     }
                                     case 2:{
                                         //Sign presential professor to event
-                                        System.out.println("Sign online professor to event");
+                                        ParticipantManager participantManager = new ParticipantManager();                                        
+                                        Professor professor = participantManager.CreateProfessorPresential(sc);                                        
+                                        Integer eventId = EventManager.CollectId(sc);
+                                        boolean sucess = participantManager.addParticipantToEvent(eventId, professor);
+                                        if(sucess){
+                                            System.out.println("Professor was signed successfully to the event.");
+                                        } else {
+                                            System.out.println("Failed to sign professor to the event.");
+                                        }                                        
                                         break;
                                     }
                                     case 3:{
                                         //Sign presential student to event
-                                        System.out.println("Sign online student to event");
+                                        ParticipantManager participantManager = new ParticipantManager();                                        
+                                        Student student = participantManager.CreateStudentPresential(sc);                                        
+                                        Integer eventId = EventManager.CollectId(sc);
+                                        boolean sucess = participantManager.addParticipantToEvent(eventId, student);
+                                        if(sucess){
+                                            System.out.println("Student was signed successfully to the event.");
+                                        } else {
+                                            System.out.println("Failed to sign student to the event.");
+                                        }                                        
                                         break;
                                     }
                                     case 0:{

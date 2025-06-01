@@ -2,6 +2,7 @@ package poo.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import poo.event.Event;
 
@@ -19,6 +20,15 @@ public class EventManager {
         event = new ArrayList<>();
     }
     
+    public static Integer CollectId(Scanner sc) {
+        System.out.println("Enter the ID of the event you want to sign the participant in: ");
+        Integer inputId = sc.nextInt();
+        if (inputId < 1) {
+            System.out.println("ID must be greater than 0.");
+            return CollectId(sc);        
+        }        
+        return inputId;
+    }
     
     public static List<Event> list(){
         for(Event e : event){ 

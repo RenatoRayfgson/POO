@@ -4,13 +4,17 @@ import java.util.List;
 import java.util.Scanner;
 
 import poo.event.Event;
+import poo.participant.Guest;
 import poo.participant.Participant;
+import poo.participant.Professor;
 import poo.participant.Student;
 
 public class ParticipantManager {
     private static Integer id = 1;
+    
+    
     private static List<Participant> participants;
-
+    
     
     private Event findEventById(int id) {
         for (Event e : EventManager.list()) {
@@ -21,27 +25,56 @@ public class ParticipantManager {
         return null;
     }
     
-    public void addParticipantToEvent(int eventId, Participant participant) {
+    public boolean addParticipantToEvent(int eventId, Participant participant) {
         Event event = findEventById(eventId);        
         if (event == null) {
             System.out.println("Event not found.");
-            return;
+            return false;
         }         
         if (event.getParticipants().size() >= event.getMaxCapacity()) {
-            System.out.println("Event is already full.");            
-            return;
+            System.out.println("Event is full.");            
+            return false;
         }
         event.addParticipant(participant.getId());
         participants.add(participant);        
         System.out.println("Participant was added successfully to the event.");
+        return true;
     }
     
     public Student CreateStudentPresential(Scanner sc){
         return Student.collectDataPresential(id++, sc);        
     }
     
+    public Professor CreateProfessorPresential(Scanner sc){
+        return Professor.collectDataPresential(id++, sc);        
+    }
+    
+    public Guest CreateGuestPresential(Scanner sc){
+        return Guest.collectDataPresential(id++, sc);        
+    }
+
+    public Student CreateStudentOnline(Scanner sc){
+        return Student.collectDataPresential(id++, sc);      //Mexer aqui!!
+    }
+    
+    public Professor CreateProfessorOnline(Scanner sc){
+        return Professor.collectDataPresential(id++, sc);    //Mexer aqui!!
+    }
+    
+    public Guest CreateGuestOnline(Scanner sc){
+        return Guest.collectDataPresential(id++, sc);        //Mexer aqui!!
+    }
+    
+    /*public Guest CreateGuestPresential(Scanner sc){
+        return Guest.collectDataPresential(id++, sc);        
+    }*/
+    
     public static List<Participant> getParticipants() {
         return participants;
+    }
+    
+    public static Integer getId() {
+        return id;
     }
     /*public List<Participant> getParticipantsByEvent(int eventId) {
     // encontra o evento e filtra a lista de participantes pelo ID

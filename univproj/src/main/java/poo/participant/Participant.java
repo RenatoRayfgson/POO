@@ -6,7 +6,7 @@ public abstract class Participant {
     protected String cpf;
     protected Integer id;
     protected int type; //1 - Guest, 2 - Professor, 3 - Student
-    protected int modality; //Presential or Online (I still have to introduce this in constructors and supers)
+    protected int modality; //1 - Online, 2 - Presential (I still have to introduce this in constructors and supers)
 
     public Participant(String name, String email, String cpf, int type, int modality, Integer id){
         this.name = name;
@@ -52,4 +52,3 @@ public abstract class Participant {
     
 }
 
-//coleta o cpf > se for invalido > entra em loop > pede novamente > verifica novamente > se for valido, continua > se nao for, loop dnv

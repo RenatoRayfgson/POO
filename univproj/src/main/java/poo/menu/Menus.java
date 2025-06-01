@@ -28,7 +28,12 @@ public class Menus{
     }
     public static void SignPresentialParticipantMenu(){
         line();
-        System.out.println("Take your option:\n[1] - Sign online guest to event\n[2] - Sign presential professor to event\n[3] - Sign presential guest event\n[0] - Back to Main Menu");
+        System.out.println("Take your option:\n[1] - Sign presential guest to event\n[2] - Sign presential professor to event\n[3] - Sign presential guest event\n[0] - Back to Main Menu");
+        line();
+    }
+    public static void SignOnlineParticipantMenu(){
+        line();
+        System.out.println("Take your option:\n[1] - Sign presential guest to event\n[2] - Sign presential professor to event\n[3] - Sign presential guest event\n[0] - Back to Main Menu");
         line();
     }
 
