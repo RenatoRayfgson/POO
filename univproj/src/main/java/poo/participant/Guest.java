@@ -19,13 +19,13 @@ public class Guest extends Participant  {
         System.out.println("Enter the email of the guest:");
         String guestEmail = sc.nextLine();
         while(!isValidEmail(guestEmail)){
-            System.out.println("Invalid email. Please enter a valid email:\n");
+            System.out.println("Invalid email. Please enter a valid email:");
             guestEmail = sc.nextLine();
         }
         System.out.println("Enter the CPF of the guest:");
         String guestCpf = sc.nextLine();        
         while(!isValidCPF(guestCpf)){
-            System.out.println("Invalid CPF. Please enter a valid CPF:\n");
+            System.out.println("Invalid CPF. Please enter a valid CPF:");
             guestCpf = sc.nextLine();
         }        
         System.out.println("Enter the name of origin of the guest (Another university, enterprise, etc):");

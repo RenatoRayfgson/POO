@@ -8,6 +8,7 @@ import poo.event.Lecture;
 import poo.event.Workshop;
 import poo.menu.Menus;
 import poo.participant.Guest;
+import poo.participant.OnlineStudent;
 import poo.participant.Professor;
 import poo.participant.Student;
 import poo.service.EventManager;
@@ -93,11 +94,20 @@ public class Main {
                                         break;
                                     }
                                     case 2:{
-                                        //Sign online student to event
+                                        //Sign online professor to event
                                         break;
                                     }
                                     case 3:{
-                                        //Sign online professor to event
+                                        //Sign online student to event
+                                        ParticipantManager participantManager = new ParticipantManager();                                        
+                                        OnlineStudent onlineStudent = participantManager.CreateStudentOnline(sc);                                        
+                                        Integer eventId = EventManager.CollectId(sc);
+                                        boolean sucess = participantManager.addParticipantToEvent(eventId, onlineStudent);
+                                        if(sucess){
+                                            System.out.println("Student was signed successfully to the event.");
+                                        } else {
+                                            System.out.println("Failed to sign online student to the event.");
+                                        }                                        
                                         break;
                                     }
                                     case 0:{
@@ -114,7 +124,7 @@ public class Main {
                                 int participantOption = sc.nextInt();
                                 switch(participantOption){
                                     case 1:{
-                                        //Sign online guest to event
+                                        //Sign presential guest to event
                                         ParticipantManager participantManager = new ParticipantManager();                                        
                                         Guest guest = participantManager.CreateGuestPresential(sc);                                        
                                         Integer eventId = EventManager.CollectId(sc);

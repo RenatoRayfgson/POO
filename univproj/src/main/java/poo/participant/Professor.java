@@ -21,19 +21,19 @@ public class Professor extends Participant {
     System.out.println("Enter the email of the Professor:");
     String professorEmail = sc.nextLine();
     while(!isValidEmail(professorEmail)){
-        System.out.println("Invalid email. Please enter a valid email:\n");
+        System.out.println("Invalid email. Please enter a valid email:");
         professorEmail = sc.nextLine();
     }
     System.out.println("Enter the CPF of the Professor:");
     String professorCpf = sc.nextLine();        
     while(!isValidCPF(professorCpf)){
-        System.out.println("Invalid CPF. Please enter a valid CPF:\n");
+        System.out.println("Invalid CPF. Please enter a valid CPF:");
         professorCpf = sc.nextLine();
     }        
     System.out.println("Enter the matriculation of the Professor:");
     String professorMatriculation = sc.nextLine();
     while(!isOnlyDigits(professorMatriculation)){
-        System.out.println("Invalid matriculation. Please enter a valid matriculation (only digits):\n");
+        System.out.println("Invalid matriculation. Please enter a valid matriculation (only digits):");
         professorMatriculation = sc.nextLine();
     }
     return new Professor(professorName, professorEmail, professorCpf, 2, professorMatriculation, 2, id);

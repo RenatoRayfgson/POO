@@ -14,6 +14,7 @@ public abstract class Participant {
         this.cpf = cpf;
         this.type = type;
         this.modality = modality;
+        this.id = id;
     } 
 
     public Participant() {

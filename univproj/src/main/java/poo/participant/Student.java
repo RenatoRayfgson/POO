@@ -32,19 +32,19 @@ public class Student extends Participant  {
         System.out.println("Enter the email of the Student:");
         String studentEmail = sc.nextLine();
         while(!isValidEmail(studentEmail)){
-            System.out.println("Invalid email. Please enter a valid email:\n");
+            System.out.println("Invalid email. Please enter a valid email:");
             studentEmail = sc.nextLine();
         }
         System.out.println("Enter the CPF of the Student:");
         String studentCpf = sc.nextLine();        
         while(!isValidCPF(studentCpf)){
-            System.out.println("Invalid CPF. Please enter a valid CPF:\n");
+            System.out.println("Invalid CPF. Please enter a valid CPF:");
             studentCpf = sc.nextLine();
         }        
         System.out.println("Enter the matriculation of the Student:");
         String studentMatriculation = sc.nextLine();
         while(!isOnlyDigits(studentMatriculation)){
-            System.out.println("Invalid matriculation. Please enter a valid matriculation (only digits):\n");
+            System.out.println("Invalid matriculation. Please enter a valid matriculation (only digits):");
             studentMatriculation = sc.nextLine();
         }
         return new Student(studentName, studentEmail, studentCpf, 3, studentMatriculation, 2, id);        

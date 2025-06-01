@@ -1,10 +1,12 @@
 package poo.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 import poo.event.Event;
 import poo.participant.Guest;
+import poo.participant.OnlineStudent;
 import poo.participant.Participant;
 import poo.participant.Professor;
 import poo.participant.Student;
@@ -13,7 +15,8 @@ public class ParticipantManager {
     private static Integer id = 1;
     
     
-    private static List<Participant> participants;
+    @SuppressWarnings("FieldMayBeFinal")
+    private static List<Participant> participants = new ArrayList<>();
     
     
     private Event findEventById(int id) {
@@ -53,8 +56,8 @@ public class ParticipantManager {
         return Guest.collectDataPresential(id++, sc);        
     }
 
-    public Student CreateStudentOnline(Scanner sc){
-        return Student.collectDataPresential(id++, sc);      //Mexer aqui!!
+    public OnlineStudent CreateStudentOnline(Scanner sc){
+        return OnlineStudent.collectDataOnline(sc, id++);      //Mexer aqui!!
     }
     
     public Professor CreateProfessorOnline(Scanner sc){
