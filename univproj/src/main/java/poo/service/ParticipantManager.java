@@ -31,6 +31,12 @@ public class ParticipantManager {
             System.out.println("Event is full.");            
             return false;
         }
+
+        if(event.getType() == 2 && !(participant instanceof OnlineStudent || participant instanceof Student)){
+            System.out.println("Only students can be registered for a course.");
+            return false;
+        }
+
             // Verifica duplicidade por CPF
         for (Integer verifyId : event.getParticipants()) {
             for (Participant p : participants) {

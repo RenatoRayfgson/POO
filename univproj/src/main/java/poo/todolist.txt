@@ -1,6 +1,6 @@
 Criar o generator certify
 Gerar os relatórios
-Colocar pra curso só aceitar Student
+Colocar pra curso só aceitar Student               FEITO!!!!
 Criar função abstrata pra Event e Participant
 
 Substituir List por Map

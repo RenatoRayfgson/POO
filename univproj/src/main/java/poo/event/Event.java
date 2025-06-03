@@ -60,4 +60,8 @@ public abstract class Event {
     public int getMaxCapacity() {
         return maxCapacity;
     }
+
+    public int getType() {
+        return type;
+    }
 }
