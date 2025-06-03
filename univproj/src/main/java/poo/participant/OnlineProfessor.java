@@ -33,8 +33,7 @@ public class OnlineProfessor extends Professor {
             sc.nextLine();
         }
         System.out.println("Your telephone will be used to receive links and reminders about the event!\nEnter the telephone of the Online Student (XX XXXXXXXXX format):");
-        String professorTelephone = sc.nextLine();
-        sc.nextLine();
+        String professorTelephone = sc.nextLine();        
         while(!isValidTelephone(professorTelephone)){
             System.out.println("Invalid telephone. Please enter a valid telephone (XX XXXXXXXXX format):");
             professorTelephone = sc.nextLine();
