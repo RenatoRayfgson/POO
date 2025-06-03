@@ -12,24 +12,15 @@ import poo.participant.OnlineStudent;
 import poo.participant.Participant;
 import poo.participant.Professor;
 import poo.participant.Student;
+import static poo.service.EventManager.findEventById;
 
 public class ParticipantManager {
     private static Integer id = 1;
     
     
     @SuppressWarnings("FieldMayBeFinal")
-    private static List<Participant> participants = new ArrayList<>();
-    
-    
-    private Event findEventById(int id) {
-        for (Event e : EventManager.list()) {
-            if (e.getId() == id) {
-                return e;
-            }
-        }
-        return null;
-    }
-    
+    private static List<Participant> participants = new ArrayList<>();  
+            
     public boolean addParticipantToEvent(int eventId, Participant participant) {
         Event event = findEventById(eventId);        
         if (event == null) {
@@ -39,6 +30,15 @@ public class ParticipantManager {
         if (event.getParticipants().size() >= event.getMaxCapacity()) {
             System.out.println("Event is full.");            
             return false;
+        }
+            // Verifica duplicidade por CPF
+        for (Integer verifyId : event.getParticipants()) {
+            for (Participant p : participants) {
+                if (p.getId().equals(verifyId) && p.getCpf().equals(participant.getCpf())) {
+                    System.out.println("A participant with this CPF is already registered for the event.");
+                    return false;
+                }
+            }
         }
         event.addParticipant(participant.getId());
         participants.add(participant);        

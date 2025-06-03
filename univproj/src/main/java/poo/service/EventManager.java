@@ -9,16 +9,21 @@ import poo.participant.Participant;
 
 public class EventManager {
     @SuppressWarnings("FieldMayBeFinal")
-    private static List<Event> event;
+    private static List<Event> event = new ArrayList<>();
     private static Integer id=1;
 
     public void CreateEvent(Event e) {        
         event.add(e);
         id++;
-    }
-    
-    public EventManager(){
-        event = new ArrayList<>();
+    }    
+
+    public static Event findEventById(int id) {
+        for (Event e : event) {
+            if (e.getId() == id) {
+                return e;
+            }
+        }
+        return null;
     }
     
     public static Integer CollectId(Scanner sc) {
@@ -40,15 +45,8 @@ public class EventManager {
 
     public static void ListParticipantsByEvent(int eventID){
         
-        Event eventSearched = null;
-        
-        for(Event e : EventManager.list()){
-            if(e.getId() == eventID){
-                eventSearched = e;
-                break;
-            }
-        }
-        
+        Event eventSearched = EventManager.findEventById(eventID);      
+                
         if(eventSearched == null){
             System.out.println("Event not found.");
             return;

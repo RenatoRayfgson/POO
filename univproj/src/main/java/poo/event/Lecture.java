@@ -18,11 +18,10 @@ public class Lecture extends Event {
     }
     
     public static Lecture CollectData(Integer id, Scanner sc){        
-        sc.nextLine();
         System.out.println("Enter the title of the Lecture:\n");
-        String lectureName = sc.next();
+        String lectureName = sc.nextLine();
         System.out.println("Enter the date of the Lecture (dd/mm/yyyy):\n");
-        String date = sc.next(); 
+        String date = sc.nextLine();
         Date lectureDate;
         try {
             lectureDate = new SimpleDateFormat("dd/MM/yyyy").parse(date);
@@ -31,13 +30,14 @@ public class Lecture extends Event {
             lectureDate = new Date();        
         }
         System.out.println("Enter the location of the Course:\n");
-        String lectureLocation = sc.next();
+        String lectureLocation = sc.nextLine();
         System.out.println("Enter the description of the Course:\n");
-        String lectureDescription = sc.next();
+        String lectureDescription = sc.nextLine();
         System.out.println("Enter the maximum capacity of the Course:\n");
-        int lectureCapacity = sc.nextInt();        
+        int lectureCapacity = sc.nextInt(); 
+        sc.nextLine();       
         System.out.println("Enter the Professor who will teach the course:\n");
-        String lectureSpeaker = sc.next();
+        String lectureSpeaker = sc.nextLine();
         return new Lecture(lectureName, lectureDate, lectureLocation, lectureCapacity, lectureDescription, 3, lectureSpeaker, id);
     }
 

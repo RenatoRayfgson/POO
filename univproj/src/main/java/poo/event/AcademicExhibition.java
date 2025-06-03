@@ -19,11 +19,10 @@ public class AcademicExhibition extends Event  {
     }
         
     public static AcademicExhibition CollectData(Integer id, Scanner sc){        
-        sc.nextLine();
         System.out.println("Enter the name of the Academic Exhibition:\n");
-        String exhibitionName = sc.next();
+        String exhibitionName = sc.nextLine();
         System.out.println("Enter the date of the Academic Exhibition (dd/mm/yyyy):\n");
-        String date = sc.next(); 
+        String date = sc.nextLine(); 
         Date exhibitionDate;
         try {
             exhibitionDate = new SimpleDateFormat("dd/MM/yyyy").parse(date);
@@ -32,13 +31,14 @@ public class AcademicExhibition extends Event  {
             exhibitionDate = new Date();
         }
         System.out.println("Enter the location of the Academic Exhibition:\n");
-        String exhibitionLocation = sc.next();
+        String exhibitionLocation = sc.nextLine();
         System.out.println("Enter the description of the Academic Exhibition:\n");
-        String exhibitionDescription = sc.next();
+        String exhibitionDescription = sc.nextLine();
         System.out.println("Enter the maximum capacity of the Academic Exhibition:\n");
         int exhibitionCapacity = sc.nextInt();
+        sc.nextLine();
         System.out.println("Enter the stands of the Academic Exhibition (comma separated):\n");
-        String exhibitionStands = sc.next();
+        String exhibitionStands = sc.nextLine();
         return new AcademicExhibition(exhibitionName, exhibitionDate, exhibitionLocation, exhibitionCapacity, exhibitionDescription, 1, id, exhibitionStands);
     }
     

@@ -27,11 +27,11 @@ public class OnlineGuest extends Guest {
             sc.nextLine();
         }
         System.out.println("Your telephone will be used to receive links and reminders about the event!\nEnter the telephone of the Online Guest (XX XXXXXXXXX format):");
-        String guestTelephone = sc.next();
+        String guestTelephone = sc.nextLine();
         sc.nextLine();
         while(!isValidTelephone(guestTelephone)){
             System.out.println("Invalid telephone. Please enter a valid telephone (XX XXXXXXXXX format):");
-            guestTelephone = sc.next();
+            guestTelephone = sc.nextLine();
             sc.nextLine();
         }
         System.out.println("Enter the name of the Online Guest:");

@@ -15,6 +15,7 @@ import poo.participant.Professor;
 import poo.participant.Student;
 import poo.service.EventManager;
 import poo.service.ParticipantManager;
+import poo.utilities.Utilities;
 
 
 
@@ -24,6 +25,7 @@ public class Main {
     private static Integer option = -1;              
     public static void main(String args[]){
         try (Scanner sc = new Scanner(System.in)) {
+            Utilities.initTestEvents(); // APENAS TESTE CRIANDO EVENTO, TEM QUE APAGAR DEPOIS!!!
             while(option != 0){
                 Menus.menu();
                 try {
@@ -32,7 +34,8 @@ public class Main {
                     case 1:{
                             Menus.EventsMenu();
                             int eventOption = sc.nextInt();
-                            //EVENT CRIATION
+                            sc.nextLine();
+                            //EVENT CREATION
                             switch(eventOption){
                                 case 1:{
                                     //Create Academic Exhibition                                    
@@ -87,6 +90,7 @@ public class Main {
                     case 2:{                        
                         Menus.SignParticipantMenu();
                         int modalityOption = sc.nextInt();
+                        sc.nextLine();
                         switch(modalityOption){
                             case 1:{
                                 Menus.SignOnlineParticipantMenu();
@@ -144,6 +148,7 @@ public class Main {
                             case 2:{
                                 Menus.SignPresentialParticipantMenu();
                                 int participantOption = sc.nextInt();
+                                sc.nextLine();
                                 switch(participantOption){
                                     case 1:{
                                         //Sign presential guest to event

@@ -19,11 +19,10 @@ public class Workshop extends Event  {
     }
     
     public static Workshop CollectData(Integer id, Scanner sc){        
-        sc.nextLine();
         System.out.println("Enter the title of the Workshop:\n");
-        String workshopName = sc.next();
+        String workshopName = sc.nextLine();
         System.out.println("Enter the date of the Workshop (dd/mm/yyyy):\n");
-        String date = sc.next(); 
+        String date = sc.nextLine(); 
         Date workshopDate;
         try {
             workshopDate = new SimpleDateFormat("dd/MM/yyyy").parse(date);
@@ -32,15 +31,16 @@ public class Workshop extends Event  {
             workshopDate = new Date();        
         }
         System.out.println("Enter the location of the Workshop:\n");
-        String workshopLocation = sc.next();
+        String workshopLocation = sc.nextLine();
         System.out.println("Enter the description of the Workshop:\n");
-        String workshopDescription = sc.next();
+        String workshopDescription = sc.nextLine();
         System.out.println("Enter the maximum capacity of the Workshop:\n");
-        int workshopCapacity = sc.nextInt();        
+        int workshopCapacity = sc.nextInt(); 
+        sc.nextLine();       
         System.out.println("Enter the Professor who will teach the Workshop:\n");
-        String workshopInstructor = sc.next();
+        String workshopInstructor = sc.nextLine();
         System.out.println("Enter the necessary materials for the Workshop (separated by comma):\n");
-        String workshopMaterials = sc.next();
+        String workshopMaterials = sc.nextLine();
         return new Workshop(workshopName, workshopDate, workshopLocation, workshopCapacity, workshopDescription, 3, workshopInstructor, id, workshopMaterials);
     }
 

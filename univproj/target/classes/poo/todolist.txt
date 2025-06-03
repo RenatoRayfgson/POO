@@ -1,0 +1,7 @@
+Criar o generator certify
+Gerar os relatórios
+Colocar pra curso só aceitar Student
+Criar função abstrata pra Event e Participant
+
+Substituir List por Map
+Tirar a hora da listagem de eventos
