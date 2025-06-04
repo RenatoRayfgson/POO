@@ -1,6 +1,7 @@
 package poo.utilities;
 
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import poo.event.AcademicExhibition;
 import poo.event.Course;
@@ -41,32 +42,33 @@ public class Utilities {
         return telephone != null && telephone.matches(telephoneRegex);
     }
 
-    @SuppressWarnings("UseSpecificCatch")
+
+
     public static void initTestEvents() {
         EventManager eventManager = new EventManager();
         try {
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
             AcademicExhibition ae = new AcademicExhibition(
-                "ExpoTech", sdf.parse("10/06/2025"), "Auditório 1", 100,
+                "ExpoTech", LocalDate.parse("10/06/2025", dtf), "Auditório 1", 100,
                 "Exposição de projetos", 1, EventManager.getId(), "Stand A, Stand B"
             );
             eventManager.CreateEvent(ae);
 
             Course c = new Course(
-                "Java Avançado", sdf.parse("15/06/2025"), "Sala 201", 30,
+                "Java Avançado", LocalDate.parse("15/06/2025", dtf), "Sala 201", 30,
                 "Curso intensivo de Java", 2, "Prof. João", 20, EventManager.getId()
             );
             eventManager.CreateEvent(c);
 
             Lecture l = new Lecture(
-                "Futuro da IA", sdf.parse("20/06/2025"), "Teatro", 80,
+                "Futuro da IA", LocalDate.parse("20/06/2025", dtf), "Teatro", 80,
                 "Palestra sobre inteligência artificial", 3, "Dra. Maria", EventManager.getId()
             );
             eventManager.CreateEvent(l);
 
             Workshop w = new Workshop(
-                "Robótica com Arduino", sdf.parse("25/06/2025"), "Lab Maker", 25,
+                "Robótica com Arduino", LocalDate.parse("25/06/2025", dtf), "Lab Maker", 25,
                 "Workshop prático de robótica", 4, "Eng. Lucas", EventManager.getId(), "Notebook, Kit Arduino"
             );
             eventManager.CreateEvent(w);
@@ -76,4 +78,6 @@ public class Utilities {
             System.out.println("Erro ao criar eventos de teste: " + e.getMessage());
         }
     }
+
+    
 }

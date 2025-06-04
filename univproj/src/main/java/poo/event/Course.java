@@ -1,8 +1,8 @@
 package poo.event;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.DateTimeException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Course extends Event {
@@ -14,7 +14,7 @@ public class Course extends Event {
     public Course(){
         
     }
-    public Course(String title, Date date, String local, int maxCapacity, String description, int type, String professor, int hours, Integer id){
+    public Course(String title, LocalDate date, String local, int maxCapacity, String description, int type, String professor, int hours, Integer id){
         super(title, date, local, maxCapacity, description, type, id);
         this.hours = hours;
         this.professor = professor;
@@ -25,12 +25,13 @@ public class Course extends Event {
         String courseName = sc.nextLine();
         System.out.println("Enter the date of the Course (dd/mm/yyyy):\n");
         String date = sc.nextLine(); 
-        Date courseDate;
+        LocalDate courseDate;
         try {
-            courseDate = new SimpleDateFormat("dd/MM/yyyy").parse(date);
-        } catch (ParseException e) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            courseDate = LocalDate.parse(date, formatter);            
+        } catch (DateTimeException e) {
             System.out.println("Invalid date format. Please use dd/mm/yyyy.");
-            courseDate = new Date();        
+            courseDate = LocalDate.now();
         }
         System.out.println("Enter the location of the Course:\n");
         String courseLocation = sc.nextLine();

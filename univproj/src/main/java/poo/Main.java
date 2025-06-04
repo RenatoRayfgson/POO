@@ -251,9 +251,9 @@ public class Main {
                             case 5:{
                                 //Search by date
                                 System.out.println("Enter the date to search for events (dd/mm/yyyy): ");
-                                /*String date = sc.nextLine();
+                                String date = sc.nextLine();
                                 EventManager.SearchByDate(date);
-                                break;*/
+                                break;
                             }
                             default:{
                                 System.out.println("Invalid option, try again.");

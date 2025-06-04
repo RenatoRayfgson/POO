@@ -1,14 +1,14 @@
 package poo.event;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.DateTimeException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class AcademicExhibition extends Event  {
     private String stands;    
     
-    public AcademicExhibition(String title, Date date, String local, int maxCapacity, String description, int type, Integer id, String stands) {
+    public AcademicExhibition(String title, LocalDate date, String local, int maxCapacity, String description, int type, Integer id, String stands) {
         super(title, date, local, maxCapacity, description, type, id);
         this.stands = stands;
         
@@ -23,12 +23,13 @@ public class AcademicExhibition extends Event  {
         String exhibitionName = sc.nextLine();
         System.out.println("Enter the date of the Academic Exhibition (dd/mm/yyyy):\n");
         String date = sc.nextLine(); 
-        Date exhibitionDate;
+        LocalDate exhibitionDate;
         try {
-            exhibitionDate = new SimpleDateFormat("dd/MM/yyyy").parse(date);
-        } catch (ParseException e) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            exhibitionDate = LocalDate.parse(date, formatter);            
+        } catch (DateTimeException e) {
             System.out.println("Invalid date format. Please use dd/mm/yyyy.");
-            exhibitionDate = new Date();
+            exhibitionDate = LocalDate.now();
         }
         System.out.println("Enter the location of the Academic Exhibition:\n");
         String exhibitionLocation = sc.nextLine();

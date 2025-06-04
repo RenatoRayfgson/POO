@@ -11,7 +11,7 @@ public class Menus{
 
     public static void menu(){
         line();
-        System.out.println("Take your option:\n[1] - Events\n[2] - Participants\n[3] - Generate Certify\n[4] - Generate Report\n[0] - EXIT");
+        System.out.println("Take your option:\n[1] - Events\n[2] - Participants\n[3] - Generate Certify\n[4] - Search by event type or date\n[0] - EXIT");
         line();
     }
 

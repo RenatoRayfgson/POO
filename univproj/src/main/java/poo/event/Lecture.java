@@ -1,15 +1,15 @@
 package poo.event;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.DateTimeException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 
 public class Lecture extends Event {
     private String speaker;
 
-    public Lecture(String title, Date date, String local, int maxCapacity, String description, int type, String speaker, Integer id) {
+    public Lecture(String title, LocalDate date, String local, int maxCapacity, String description, int type, String speaker, Integer id) {
         super(title, date, local, maxCapacity, description, type, id);
         this.speaker = speaker;
     }
@@ -23,12 +23,13 @@ public class Lecture extends Event {
         String lectureName = sc.nextLine();
         System.out.println("Enter the date of the Lecture (dd/mm/yyyy):\n");
         String date = sc.nextLine();
-        Date lectureDate;
+        LocalDate lectureDate;
         try {
-            lectureDate = new SimpleDateFormat("dd/MM/yyyy").parse(date);
-        } catch (ParseException e) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            lectureDate = LocalDate.parse(date, formatter);            
+        } catch (DateTimeException e) {
             System.out.println("Invalid date format. Please use dd/mm/yyyy.");
-            lectureDate = new Date();        
+            lectureDate = LocalDate.now();
         }
         System.out.println("Enter the location of the Course:\n");
         String lectureLocation = sc.nextLine();
