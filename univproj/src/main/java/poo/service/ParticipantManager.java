@@ -65,20 +65,16 @@ public class ParticipantManager {
     }
 
     public OnlineStudent CreateStudentOnline(Scanner sc){
-        return OnlineStudent.collectDataOnline(id++, sc);      //Fix here!!
+        return OnlineStudent.collectDataOnline(id++, sc);      
     }
     
     public OnlineProfessor CreateProfessorOnline(Scanner sc){
-        return OnlineProfessor.collectDataOnline(id++, sc);    //Fix here!!
+        return OnlineProfessor.collectDataOnline(id++, sc);    
     }
     
     public OnlineGuest CreateGuestOnline(Scanner sc){
-        return OnlineGuest.collectDataOnline(id++, sc);        //Fix here!!
-    }
-    
-    /*public Guest CreateGuestPresential(Scanner sc){
-        return Guest.collectDataPresential(id++, sc);        
-    }*/
+        return OnlineGuest.collectDataOnline(id++, sc);        
+    }    
     
     public static List<Participant> getParticipants() {
         return participants;

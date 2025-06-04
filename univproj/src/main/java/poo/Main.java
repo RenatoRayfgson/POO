@@ -13,7 +13,9 @@ import poo.participant.OnlineProfessor;
 import poo.participant.OnlineStudent;
 import poo.participant.Professor;
 import poo.participant.Student;
+import poo.service.CertificateGenerator;
 import poo.service.EventManager;
+import static poo.service.EventManager.listEventsByCPF;
 import poo.service.ParticipantManager;
 import poo.utilities.Utilities;
 
@@ -30,6 +32,7 @@ public class Main {
                 Menus.menu();
                 try {
                     option = sc.nextInt();
+                    sc.nextLine();
                     switch(option){
                     case 1:{
                             Menus.EventsMenu();
@@ -216,6 +219,19 @@ public class Main {
                     }
                     case 3:{
                         //Generate Certify
+                        String cpf;
+                        System.out.println("Enter the CPF of the participant to generate the certificate: ");
+                        cpf = sc.nextLine();
+                        while(!Utilities.isValidCPF(cpf)) {
+                            System.out.println("Invalid CPF. Please enter a valid CPF: ");
+                            cpf = sc.nextLine();
+                        }                        
+                        listEventsByCPF(cpf);
+                        System.out.println("Enter the ID of the event to generate the certificate: ");
+                        int eventId = sc.nextInt();
+                        sc.nextLine();
+                        CertificateGenerator.generateCertificate(eventId, cpf);
+                        System.out.println("Certificate generated successfully and sent to the participant's email.");
                         break;
                     }
                     case 4:{

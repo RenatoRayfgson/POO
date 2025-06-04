@@ -15,11 +15,12 @@ public class EventManager {
     private static List<Event> event = new ArrayList<>();
     private static Integer id=1;
 
+    
     public void CreateEvent(Event e) {        
         event.add(e);
         id++;
     }    
-
+    
     public static Event findEventById(int id) {
         for (Event e : event) {
             if (e.getId() == id) {
@@ -45,14 +46,14 @@ public class EventManager {
         for(Event e : event){ 
             System.out.println("Event ID: " + e.getId() + " Title: " + e.getTitle() + " Date: " + e.getDate().format(dtf) + " Local: " + e.getLocal());
         }
-
+        
         return event;
     }
-
+    
     public static void ListParticipantsByEvent(int eventID){
         
         Event eventSearched = EventManager.findEventById(eventID);      
-                
+        
         if(eventSearched == null){
             System.out.println("Event not found.");
             return;
@@ -65,7 +66,7 @@ public class EventManager {
             return;
         }
         System.out.println("Participants for event ID " + eventID + " - " + eventSearched.getTitle() + ":");
-
+        
         for(Integer participantId : participants){
             for(Participant p : ParticipantManager.getParticipants()){
                 if(p.getId().equals(participantId)){
@@ -76,7 +77,7 @@ public class EventManager {
             }
         }
     }
-
+    
     public static void SearchByType(int type){
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         boolean found = false;
@@ -90,7 +91,7 @@ public class EventManager {
             System.out.println("No events found for this type.");
         }
     }
-
+    
     public static void SearchByDate(String date){
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate searchDate;
@@ -101,7 +102,7 @@ public class EventManager {
             System.out.println("Invalid date format. Please use dd/MM/yyyy.");
             return;
         }
-
+        
         boolean found = false;        
         
         for(Event e : event){
@@ -110,13 +111,35 @@ public class EventManager {
                 found = true;
             }
         }
-
+        
         if(!found){
             System.out.println("No events found for this date.");
+        }
+    }
+
+    public static void listEventsByCPF(String cpf) {
+        boolean found = false;
+        for(Event e : event){
+            for(Integer participantId : e.getParticipants()){
+                for(Participant p : ParticipantManager.getParticipants()){
+                    if(p.getId().equals(participantId) && p.getCpf().equals(cpf)){
+                        System.out.println("Event ID: " + e.getId() + " Title: " + e.getTitle() + " Date: " + e.getDate() + " Local: " + e.getLocal());
+                        found = true;
+                    }
+                }
+            }
+        }
+        if(!found){
+            System.out.println("No events found for this CPF.");
         }
     }
     
     public static Integer getId() {
         return id;
     }
+    
+    public static List<Event> getEvent() {
+        return event;
+    }
 }
+
