@@ -1,9 +1,9 @@
 package poo.service;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -40,9 +40,12 @@ public class EventManager {
     }
     
     public static List<Event> list(){
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        
         for(Event e : event){ 
-            System.out.println("Event ID: " + e.getId() + " Title: " + e.getTitle() + " Date: " + e.getDate() + " Local: " + e.getLocal());
+            System.out.println("Event ID: " + e.getId() + " Title: " + e.getTitle() + " Date: " + e.getDate().format(dtf) + " Local: " + e.getLocal());
         }
+
         return event;
     }
 
@@ -75,10 +78,11 @@ public class EventManager {
     }
 
     public static void SearchByType(int type){
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         boolean found = false;
         for(Event e : event){
             if(e.getType() == type){
-                System.out.println("Event ID: " + e.getId() + " Title: " + e.getTitle() + " Date: " + e.getDate() + " Local: " + e.getLocal());
+                System.out.println("Event ID: " + e.getId() + " Title: " + e.getTitle() + " Date: " + e.getDate().format(dtf) + " Local: " + e.getLocal());
                 found = true;
             }
         }
@@ -88,22 +92,25 @@ public class EventManager {
     }
 
     public static void SearchByDate(String date){
-        boolean found = false;
-        Date searchDate;
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate searchDate;
         
         try {
-            searchDate = new SimpleDateFormat("dd/MM/yyyy").parse(date);
-        } catch (ParseException e) {
-            System.out.println("Invalid date format. Please use dd/mm/yyyy.");
-            searchDate = new Date();        
+            searchDate = LocalDate.parse(date, dtf);
+        } catch (DateTimeParseException e) {
+            System.out.println("Invalid date format. Please use dd/MM/yyyy.");
+            return;
         }
+
+        boolean found = false;        
         
         for(Event e : event){
             if(e.getDate().equals(searchDate)){
-                System.out.println("Event ID: " + e.getId() + " Title: " + e.getTitle() + " Date: " + e.getDate() + " Local: " + e.getLocal());
+                System.out.println("Event ID: " + e.getId() + " Title: " + e.getTitle() + " Date: " + e.getDate().format(dtf) + " Local: " + e.getLocal());
                 found = true;
             }
         }
+
         if(!found){
             System.out.println("No events found for this date.");
         }

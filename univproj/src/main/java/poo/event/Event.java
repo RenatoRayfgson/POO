@@ -1,12 +1,12 @@
 package poo.event;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 public abstract class Event {
     
     protected String title;    
-    protected Date date;    
+    protected LocalDate date;    
     protected String local;    
     protected int maxCapacity;    
     protected String description;
@@ -18,7 +18,7 @@ public abstract class Event {
         
     }
     
-    public Event(String title, Date date, String local, int maxCapacity, String description, int type, Integer id) {
+    public Event(String title, LocalDate date, String local, int maxCapacity, String description, int type, Integer id) {
         this.title = title;
         this.date = date;
         this.local = local;
@@ -45,7 +45,7 @@ public abstract class Event {
         return title;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
