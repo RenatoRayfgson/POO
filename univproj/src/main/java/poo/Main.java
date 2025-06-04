@@ -220,6 +220,45 @@ public class Main {
                     }
                     case 4:{
                         //Generate Report
+                        Menus.SearchByTypeMenu();
+                        int type = sc.nextInt();
+                        sc.nextLine();
+                        switch(type){
+                            case 1:{
+                                //Search by Academic Exhibitions
+                                System.out.println("Listing all Academic Exhibitions:");
+                                EventManager.SearchByType(1);
+                                break;
+                            }
+                            case 2:{
+                                //Search by Courses
+                                System.out.println("Listing all Courses:");
+                                EventManager.SearchByType(2);
+                                break;
+                            }
+                            case 3:{
+                                //Search by Lecture
+                                System.out.println("Listing all Lectures:");
+                                EventManager.SearchByType(3);
+                                break;
+                            }
+                            case 4:{
+                                //Search by Workshopes
+                                System.out.println("Listing all Workshops:");
+                                EventManager.SearchByType(4);
+                                break;
+                            }
+                            case 5:{
+                                //Search by date
+                                System.out.println("Enter the date to search for events (dd/mm/yyyy): ");
+                                /*String date = sc.nextLine();
+                                EventManager.SearchByDate(date);
+                                break;*/
+                            }
+                            default:{
+                                System.out.println("Invalid option, try again.");
+                            }
+                        }
                         break;
                     }
                     case 0:

@@ -41,7 +41,7 @@ public class Workshop extends Event  {
         String workshopInstructor = sc.nextLine();
         System.out.println("Enter the necessary materials for the Workshop (separated by comma):\n");
         String workshopMaterials = sc.nextLine();
-        return new Workshop(workshopName, workshopDate, workshopLocation, workshopCapacity, workshopDescription, 3, workshopInstructor, id, workshopMaterials);
+        return new Workshop(workshopName, workshopDate, workshopLocation, workshopCapacity, workshopDescription, 4, workshopInstructor, id, workshopMaterials);
     }
 
     public String getInstrutor() {

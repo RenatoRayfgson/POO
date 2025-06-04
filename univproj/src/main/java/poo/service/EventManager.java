@@ -1,6 +1,9 @@
 package poo.service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -68,6 +71,41 @@ public class EventManager {
                     break;
                 }
             }
+        }
+    }
+
+    public static void SearchByType(int type){
+        boolean found = false;
+        for(Event e : event){
+            if(e.getType() == type){
+                System.out.println("Event ID: " + e.getId() + " Title: " + e.getTitle() + " Date: " + e.getDate() + " Local: " + e.getLocal());
+                found = true;
+            }
+        }
+        if(!found){
+            System.out.println("No events found for this type.");
+        }
+    }
+
+    public static void SearchByDate(String date){
+        boolean found = false;
+        Date searchDate;
+        
+        try {
+            searchDate = new SimpleDateFormat("dd/MM/yyyy").parse(date);
+        } catch (ParseException e) {
+            System.out.println("Invalid date format. Please use dd/mm/yyyy.");
+            searchDate = new Date();        
+        }
+        
+        for(Event e : event){
+            if(e.getDate().equals(searchDate)){
+                System.out.println("Event ID: " + e.getId() + " Title: " + e.getTitle() + " Date: " + e.getDate() + " Local: " + e.getLocal());
+                found = true;
+            }
+        }
+        if(!found){
+            System.out.println("No events found for this date.");
         }
     }
     
