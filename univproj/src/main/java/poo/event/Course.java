@@ -12,8 +12,9 @@ public class Course extends Event {
     private String professor;
 
     public Course(){
-        
+        //Default Constructor
     }
+
     public Course(String title, LocalDate date, String local, int maxCapacity, String description, int type, String professor, int hours, Integer id){
         super(title, date, local, maxCapacity, description, type, id);
         this.hours = hours;
