@@ -15,7 +15,7 @@ public abstract class Event {
     protected int type; // 1 - AcademicExhibition, 2 - Course, 3 - Lecture, 4 - Workshop
 
     public Event(){
-        
+        //Default constructor
     }
     
     public Event(String title, LocalDate date, String local, int maxCapacity, String description, int type, Integer id) {
@@ -63,5 +63,9 @@ public abstract class Event {
 
     public int getType() {
         return type;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

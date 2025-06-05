@@ -4,7 +4,7 @@ Colocar pra curso só aceitar Student               FEITO!!!!
 Criar função abstrata pra Event e Participant      FEITO!!!!
 Adicionar biblioteca externa                       ()
 
-Substituir List por Map                            (Não vou fazer, vai ser O(n) msm)
+Substituir List por Map                            FEITO!!!!
 Tirar a hora da listagem de eventos                FEITO!!!!
 
 

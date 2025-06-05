@@ -1,7 +1,8 @@
 package poo.service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 import poo.event.Event;
@@ -19,7 +20,7 @@ public class ParticipantManager {
     
     
     @SuppressWarnings("FieldMayBeFinal")
-    private static List<Participant> participants = new ArrayList<>();  
+    private static Map<Integer, Participant> participants = new HashMap<>();  
             
     public boolean addParticipantToEvent(int eventId, Participant participant) {
         Event event = findEventById(eventId);        
@@ -39,15 +40,14 @@ public class ParticipantManager {
 
             // Verifica duplicidade por CPF
         for (Integer verifyId : event.getParticipants()) {
-            for (Participant p : participants) {
-                if (p.getId().equals(verifyId) && p.getCpf().equals(participant.getCpf())) {
-                    System.out.println("A participant with this CPF is already registered for the event.");
-                    return false;
-                }
+            Participant p = participants.get(verifyId);
+            if (p != null && p.getCpf().equals(participant.getCpf())) {
+                System.out.println("Participant with this CPF already registered in the event.");
+                return false;
             }
         }
         event.addParticipant(participant.getId());
-        participants.add(participant);        
+        participants.put(participant.getId(), participant);        
         System.out.println("Participant was added successfully to the event.");
         return true;
     }
@@ -76,8 +76,8 @@ public class ParticipantManager {
         return OnlineGuest.collectDataOnline(id++, sc);        
     }    
     
-    public static List<Participant> getParticipants() {
-        return participants;
+    public static Collection<Participant> getParticipants() {
+        return participants.values();
     }
     
     public static Integer getId() {
