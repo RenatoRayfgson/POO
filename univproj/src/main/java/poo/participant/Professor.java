@@ -7,7 +7,7 @@ import static poo.utilities.Utilities.isValidCPF;
 import static poo.utilities.Utilities.isValidEmail;
 
 
-public class Professor extends Participant {
+public class Professor extends PresentialParticipant {
     private String matriculation;
 
     public Professor(String name, String email, String cpf, int type, String matriculation, int modality, Integer id) {
@@ -15,7 +15,8 @@ public class Professor extends Participant {
         this.matriculation = matriculation;
     }
 
-    public static Professor collectDataPresential(Integer id, Scanner sc) {
+    @Override
+    public Professor collectDataPresential(Integer id, Scanner sc) {
     System.out.println("Enter the name of the Professor:");
     String professorName = sc.nextLine();
     System.out.println("Enter the email of the Professor:");

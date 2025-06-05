@@ -5,15 +5,16 @@ import java.util.Scanner;
 import static poo.utilities.Utilities.isValidCPF;
 import static poo.utilities.Utilities.isValidEmail;
 
-public class Guest extends Participant  {
+public class Guest extends PresentialParticipant  {
     private String origin;
 
     public Guest(String name, String email, String cpf, int type, String origin, int modality, Integer id) {
         super(name, email, cpf, type, modality, id);
         this.origin = origin;
     }
-
-    public static Guest collectDataPresential(Integer id, Scanner sc) {
+    
+    @Override
+    public Guest collectDataPresential(Integer id, Scanner sc) {
         System.out.println("Enter the name of the guest:");
         String guestName = sc.nextLine();
         System.out.println("Enter the email of the guest:");

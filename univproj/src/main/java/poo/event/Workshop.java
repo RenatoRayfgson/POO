@@ -18,15 +18,16 @@ public class Workshop extends Event  {
         // Default constructor
     }
     
-    public static Workshop CollectData(Integer id, Scanner sc){        
+    @Override
+    public Workshop CollectData(Integer id, Scanner sc){        
         System.out.println("Enter the title of the Workshop:\n");
         String workshopName = sc.nextLine();
         System.out.println("Enter the date of the Workshop (dd/mm/yyyy):\n");
-        String date = sc.nextLine(); 
+        String dateEvent = sc.nextLine(); 
         LocalDate workshopDate;
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            workshopDate = LocalDate.parse(date, formatter);            
+            workshopDate = LocalDate.parse(dateEvent, formatter);            
         } catch (DateTimeException e) {
             System.out.println("Invalid date format. Please use dd/mm/yyyy.");
             workshopDate = LocalDate.now();
@@ -43,6 +44,11 @@ public class Workshop extends Event  {
         System.out.println("Enter the necessary materials for the Workshop (separated by comma):\n");
         String workshopMaterials = sc.nextLine();
         return new Workshop(workshopName, workshopDate, workshopLocation, workshopCapacity, workshopDescription, 4, workshopInstructor, id, workshopMaterials);
+    }
+
+    @Override
+    public String getCertificateExtraInfo() {
+        return "The workshop was lead by: " + instructor + ". And used the materials: " + necessaryMaterials;
     }
 
     public String getInstrutor() {

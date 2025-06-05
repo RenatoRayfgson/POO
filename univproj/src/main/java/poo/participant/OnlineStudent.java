@@ -7,21 +7,26 @@ import static poo.utilities.Utilities.isValidCPF;
 import static poo.utilities.Utilities.isValidEmail;
 import static poo.utilities.Utilities.isValidTelephone;
 
-public class OnlineStudent extends Student {
+public class OnlineStudent extends OnlineParticipant {
 
     @SuppressWarnings("FieldMayBeFinal")
-    private String telephone;    
+    private String telephone;
+    @SuppressWarnings("FieldMayBeFinal")
+    private String matriculation;    
 
-    public String getTelephone() {
-        return telephone;
+    
+    public OnlineStudent() {
+        // Default constructor
     }
-
+    
     public OnlineStudent(String name, String email, String cpf, int type, String matriculation, int modality, Integer id, String telephone){
-        super(name, email, cpf, type, matriculation, modality, id);
+        super(name, email, cpf, type, modality, id);
         this.telephone = telephone;
+        this.matriculation = matriculation;
     }
-
-    public static OnlineStudent collectDataOnline(Integer id, Scanner sc) {
+    
+    @Override
+    public OnlineStudent collectDataOnline(Integer id, Scanner sc) {
         System.out.println("Do you agree to the following terms of online participation?\nKeep microphone muted\nDo not share or record the screen\nDo not share the link with others");
         System.out.println("[1] Yes\n[2] No");
         int choice = sc.nextInt();
@@ -60,5 +65,12 @@ public class OnlineStudent extends Student {
         }       
         return new OnlineStudent(studentName, studentEmail, studentCpf, 3, studentMatriculation, 1, id, studentTelephone);
     }        
+    
+    public String getMatriculation() {
+        return matriculation;
+    }
 
+    public String getTelephone() {
+        return telephone;
+    }
 }
