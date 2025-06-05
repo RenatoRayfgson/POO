@@ -2,6 +2,7 @@ package poo.event;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public abstract class Event {
     
@@ -36,6 +37,9 @@ public abstract class Event {
     
     //Criar método abstrato que liste os eventos ou qualquer coisa do tipo
     //public abstract void listEventDetails(); //Isso pode retornar os dados gerais em eventos e depois cada evento pode sobrescrever esse método para retornar os dados específicos
+    public abstract String getCertificateExtraInfo();
+
+    public abstract Event CollectData(Integer id, Scanner sc);
 
     public Integer getId() {
         return id;

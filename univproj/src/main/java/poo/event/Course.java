@@ -20,16 +20,21 @@ public class Course extends Event {
         this.hours = hours;
         this.professor = professor;
     }
-    
-    public static Course CollectData(Integer id, Scanner sc){        
+
+    @Override
+    public String getCertificateExtraInfo() {
+        return "Course Duration: " + hours + " hours\nProfessor: " + professor;
+    }
+    @Override
+    public Course CollectData(Integer id, Scanner sc){        
         System.out.println("Enter the name of the Course:\n");
         String courseName = sc.nextLine();
         System.out.println("Enter the date of the Course (dd/mm/yyyy):\n");
-        String date = sc.nextLine(); 
+        String dateEvent = sc.nextLine(); 
         LocalDate courseDate;
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            courseDate = LocalDate.parse(date, formatter);            
+            courseDate = LocalDate.parse(dateEvent, formatter);            
         } catch (DateTimeException e) {
             System.out.println("Invalid date format. Please use dd/mm/yyyy.");
             courseDate = LocalDate.now();
@@ -41,7 +46,7 @@ public class Course extends Event {
         System.out.println("Enter the maximum capacity of the Course:\n");
         int courseCapacity = sc.nextInt();
         sc.nextLine();
-        System.out.println("Enter the stands of the hours the course will least:\n");
+        System.out.println("Enter how many hours the course will least:\n");
         int courseHours = sc.nextInt();
         sc.nextLine();
         System.out.println("Enter the Professor who will teach the course:\n");

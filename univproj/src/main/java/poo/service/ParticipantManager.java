@@ -53,27 +53,33 @@ public class ParticipantManager {
     }
     
     public Student CreateStudentPresential(Scanner sc){
-        return Student.collectDataPresential(id++, sc);        
+        Student student = new Student();
+        return student.collectDataPresential(id++, sc);        
     }
     
     public Professor CreateProfessorPresential(Scanner sc){
-        return Professor.collectDataPresential(id++, sc);        
+        Professor professor = new Professor();
+        return professor.collectDataPresential(id++, sc);        
     }
     
     public Guest CreateGuestPresential(Scanner sc){
-        return Guest.collectDataPresential(id++, sc);        
+        Guest guest = new Guest();
+        return guest.collectDataPresential(id++, sc);        
     }
 
     public OnlineStudent CreateStudentOnline(Scanner sc){
-        return OnlineStudent.collectDataOnline(id++, sc);      
+        OnlineStudent onlineStudent = new OnlineStudent();
+        return onlineStudent.collectDataOnline(id++, sc);      
     }
     
     public OnlineProfessor CreateProfessorOnline(Scanner sc){
-        return OnlineProfessor.collectDataOnline(id++, sc);    
+        OnlineProfessor onlineProfessor = new OnlineProfessor();
+        return onlineProfessor.collectDataOnline(id++, sc);    
     }
     
     public OnlineGuest CreateGuestOnline(Scanner sc){
-        return OnlineGuest.collectDataOnline(id++, sc);        
+        OnlineGuest onlineGuest = new OnlineGuest();
+        return onlineGuest.collectDataOnline(id++, sc);        
     }    
     
     public static Collection<Participant> getParticipants() {

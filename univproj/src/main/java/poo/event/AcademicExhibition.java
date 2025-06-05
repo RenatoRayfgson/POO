@@ -17,16 +17,22 @@ public class AcademicExhibition extends Event  {
     public AcademicExhibition() {
         // Default constructor
     }
-        
-    public static AcademicExhibition CollectData(Integer id, Scanner sc){        
+
+    @Override
+    public String getCertificateExtraInfo() {
+        return "The following stands were presented: " + stands;
+    }
+       
+    @Override
+    public AcademicExhibition CollectData(Integer id, Scanner sc){        
         System.out.println("Enter the name of the Academic Exhibition:\n");
         String exhibitionName = sc.nextLine();
         System.out.println("Enter the date of the Academic Exhibition (dd/mm/yyyy):\n");
-        String date = sc.nextLine(); 
+        String dateEvent = sc.nextLine(); 
         LocalDate exhibitionDate;
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            exhibitionDate = LocalDate.parse(date, formatter);            
+            exhibitionDate = LocalDate.parse(dateEvent, formatter);            
         } catch (DateTimeException e) {
             System.out.println("Invalid date format. Please use dd/mm/yyyy.");
             exhibitionDate = LocalDate.now();

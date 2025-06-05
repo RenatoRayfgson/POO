@@ -6,7 +6,3 @@ Adicionar biblioteca externa                       ()
 
 Substituir List por Map                            FEITO!!!!
 Tirar a hora da listagem de eventos                FEITO!!!!
-
-
-
-

@@ -5,7 +5,7 @@ import static poo.utilities.Utilities.isOnlyDigits;
 import static poo.utilities.Utilities.isValidCPF;
 import static poo.utilities.Utilities.isValidEmail;
 
-public class Student extends Participant  {
+public class Student extends PresentialParticipant  {
     
     private String matriculation;
 
@@ -26,7 +26,8 @@ public class Student extends Participant  {
         this.matriculation = matriculation;
     }
 
-    public static Student collectDataPresential(Integer id, Scanner sc) {
+    @Override
+    public Student collectDataPresential(Integer id, Scanner sc) {
         System.out.println("Enter the name of the Student:");
         String studentName = sc.nextLine();
         System.out.println("Enter the email of the Student:");

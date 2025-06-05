@@ -8,20 +8,28 @@ import static poo.utilities.Utilities.isValidEmail;
 import static poo.utilities.Utilities.isValidTelephone;
  
 
-public class OnlineProfessor extends Professor {
+public class OnlineProfessor extends OnlineParticipant {
     @SuppressWarnings("FieldMayBeFinal")
     private String telephone;
+    @SuppressWarnings("FieldMayBeFinal")
+    private String matriculation;
 
     public OnlineProfessor(String name, String email, String cpf, int type, String matriculation, int modality, Integer id, String telephone){
-        super(name, email, cpf, type, matriculation, modality, id);
+        super(name, email, cpf, type, modality, id);
         this.telephone = telephone;
+        this.matriculation = matriculation;
+    }
+
+    public OnlineProfessor() {
+        // Default constructor
     }
 
     public String getTelephone() {
         return telephone;
     }
 
-    public static OnlineProfessor collectDataOnline(Integer id, Scanner sc) {
+    @Override
+    public OnlineProfessor collectDataOnline(Integer id, Scanner sc) {
         System.out.println("Do you agree to the following terms of online participation?\nKeep microphone muted\nDo not share or record the screen\nDo not share the link with others");
         System.out.println("[1] Yes\n[2] No");
         int choice = sc.nextInt();
@@ -61,5 +69,9 @@ public class OnlineProfessor extends Professor {
         }       
         return new OnlineProfessor(professorName, professorEmail, professorCpf, 2, professorMatriculation, 1, id, professorTelephone);
     } 
+
+    public String getMatriculation() {
+        return matriculation;
+    }
 
 }

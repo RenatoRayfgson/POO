@@ -6,16 +6,23 @@ import static poo.utilities.Utilities.isValidCPF;
 import static poo.utilities.Utilities.isValidEmail;
 import static poo.utilities.Utilities.isValidTelephone; 
 
-public class OnlineGuest extends Guest {
+public class OnlineGuest extends OnlineParticipant {
     @SuppressWarnings("FieldMayBeFinal")
     private String telephone;
+    private String origin;
 
     public OnlineGuest(String name, String email, String cpf, int type, String origin, int modality, Integer id, String telephone) {
-        super(name, email, cpf, type, origin, modality, id);
+        super(name, email, cpf, type, modality, id);
         this.telephone = telephone;
+        this.origin = origin;
     }
 
-    public static OnlineGuest collectDataOnline(Integer id, Scanner sc) {
+    public OnlineGuest() {
+        // Default constructor
+    }
+
+    @Override
+    public OnlineGuest collectDataOnline(Integer id, Scanner sc) {
         System.out.println("Do you agree to the following terms of online participation?\nKeep microphone muted\nDo not share or record the screen\nDo not share the link with others");
         System.out.println("[1] Yes\n[2] No");
         int choice = sc.nextInt();
@@ -55,6 +62,10 @@ public class OnlineGuest extends Guest {
 
     public String getTelephone() {
         return telephone;
+    }
+
+    public String getOrigin() {
+        return origin;
     }
     
 }

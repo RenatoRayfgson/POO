@@ -44,7 +44,7 @@ public class Main {
                                     //Create Academic Exhibition                                    
                                     EventManager eventManager = new EventManager();
                                     Integer currentId = EventManager.getId();
-                                    AcademicExhibition academicExhibition = AcademicExhibition.CollectData(currentId, sc);
+                                    AcademicExhibition academicExhibition = new AcademicExhibition().CollectData(currentId, sc);
                                     eventManager.CreateEvent(academicExhibition);
                                     System.out.println("Academic Exhibition was registered successfully!");
                                     break;
@@ -53,7 +53,7 @@ public class Main {
                                     //Create Course
                                     EventManager eventManager = new EventManager();
                                     Integer currentId = EventManager.getId();
-                                    Course course = Course.CollectData(currentId, sc);
+                                    Course course = new Course().CollectData(currentId, sc);
                                     eventManager.CreateEvent(course);
                                     System.out.println("Course was registered successfully!");
                                     break;
@@ -62,7 +62,7 @@ public class Main {
                                     //Create Lecture
                                     EventManager eventManager = new EventManager();
                                     Integer currentId = EventManager.getId();
-                                    Lecture lecture = Lecture.CollectData(currentId, sc);
+                                    Lecture lecture = new Lecture().CollectData(currentId, sc);
                                     eventManager.CreateEvent(lecture);
                                     System.out.println("Lecture was registered successfully!");
                                     break;
@@ -71,7 +71,7 @@ public class Main {
                                     //Workshop
                                     EventManager eventManager = new EventManager();
                                     Integer currentId = EventManager.getId();
-                                    Workshop workshop = Workshop.CollectData(currentId, sc);
+                                    Workshop workshop = new Workshop().CollectData(currentId, sc);
                                     eventManager.CreateEvent(workshop);
                                     System.out.println("Workshop was registered successfully!");
                                     break;
