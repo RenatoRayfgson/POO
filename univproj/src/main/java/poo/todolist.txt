@@ -6,3 +6,7 @@ Adicionar biblioteca externa                       ()
 
 Substituir List por Map                            FEITO!!!!
 Tirar a hora da listagem de eventos                FEITO!!!!
+
+Comandos para execução: 
+mvn package
+mvn exec:java
