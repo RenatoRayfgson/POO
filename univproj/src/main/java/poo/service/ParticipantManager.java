@@ -90,6 +90,16 @@ public class ParticipantManager {
         }
         return null;
     }
+
+    public static Participant findParticipantById(int id) {
+        for (Participant p : getParticipants()) {
+            if (p.getId() == id) {
+                return p;
+            }
+        }
+        return null;
+    }
+
     
     public static Collection<Participant> getParticipants() {
         return participants.values();
