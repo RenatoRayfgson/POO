@@ -123,12 +123,13 @@ public class EventManager {
     }
 
     public static void listEventsByCPF(String cpf) {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         boolean found = false;
         for(Event e : event.values()){
             for(Integer participantId : e.getParticipants()){
                 for(Participant p : ParticipantManager.getParticipants()){
                     if(p.getId().equals(participantId) && p.getCpf().equals(cpf)){
-                        System.out.println("Event ID: " + e.getId() + " Title: " + e.getTitle() + " Date: " + e.getDate() + " Local: " + e.getLocal());
+                        System.out.println("Event ID: " + e.getId() + " Title: " + e.getTitle() + " Date: " + e.getDate().format(dtf) + " Local: " + e.getLocal());
                         found = true;
                     }
                 }

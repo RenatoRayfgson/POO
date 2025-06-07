@@ -17,6 +17,7 @@ import poo.service.CertificateGenerator;
 import poo.service.EventManager;
 import static poo.service.EventManager.listEventsByCPF;
 import poo.service.ParticipantManager;
+import poo.utilities.PDFGenerator;
 import poo.utilities.Utilities;
 
 
@@ -225,14 +226,29 @@ public class Main {
                         while(!Utilities.isValidCPF(cpf)) {
                             System.out.println("Invalid CPF. Please enter a valid CPF: ");
                             cpf = sc.nextLine();
-                        }                        
+                        }
+                        Menus.line();                        
                         listEventsByCPF(cpf);
+                        Menus.line();
                         System.out.println("Enter the ID of the event to generate the certificate: ");
                         int eventId = sc.nextInt();
                         sc.nextLine();
-                        CertificateGenerator.generateCertificate(eventId, cpf);
-                        System.out.println("Certificate generated successfully and sent to the participant's email.");
-                        break;
+                        boolean sucess = CertificateGenerator.generateCertificate(eventId, cpf);
+                        Menus.line();
+                        if(sucess){
+                            System.out.println("Do you want to export the certificate as a PDF?\n[1] Yes\n[2] No");
+                            int exportOption = sc.nextInt();
+                            sc.nextLine();
+                            if(exportOption == 1){
+                                //Export to PDF
+                                System.out.println("Generating PDF certificate...");
+                                PDFGenerator.Generate(eventId, cpf);
+                                System.out.println("PDF certificate generated successfully!");
+                            } else {
+                                System.out.println("Certificate generation completed without PDF export.");
+                            }
+                        }                      
+                        break;                        
                     }
                     case 4:{
                         //Generate Report
