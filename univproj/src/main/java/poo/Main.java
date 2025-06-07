@@ -39,11 +39,12 @@ public class Main {
                             Menus.EventsMenu();
                             int eventOption = sc.nextInt();
                             sc.nextLine();
+                            EventManager eventManager = new EventManager();
                             //EVENT CREATION
                             switch(eventOption){
                                 case 1:{
                                     //Create Academic Exhibition                                    
-                                    EventManager eventManager = new EventManager();
+                                    
                                     Integer currentId = EventManager.getId();
                                     AcademicExhibition academicExhibition = new AcademicExhibition().CollectData(currentId, sc);
                                     eventManager.CreateEvent(academicExhibition);
@@ -52,7 +53,7 @@ public class Main {
                                 }
                                 case 2:{
                                     //Create Course
-                                    EventManager eventManager = new EventManager();
+                                    
                                     Integer currentId = EventManager.getId();
                                     Course course = new Course().CollectData(currentId, sc);
                                     eventManager.CreateEvent(course);
@@ -61,7 +62,7 @@ public class Main {
                                 }
                                 case 3:{
                                     //Create Lecture
-                                    EventManager eventManager = new EventManager();
+                                    
                                     Integer currentId = EventManager.getId();
                                     Lecture lecture = new Lecture().CollectData(currentId, sc);
                                     eventManager.CreateEvent(lecture);
@@ -70,7 +71,7 @@ public class Main {
                                 }
                                 case 4:{
                                     //Workshop
-                                    EventManager eventManager = new EventManager();
+                                    
                                     Integer currentId = EventManager.getId();
                                     Workshop workshop = new Workshop().CollectData(currentId, sc);
                                     eventManager.CreateEvent(workshop);
@@ -95,6 +96,7 @@ public class Main {
                         Menus.SignParticipantMenu();
                         int modalityOption = sc.nextInt();
                         sc.nextLine();
+                        ParticipantManager participantManager = new ParticipantManager();
                         switch(modalityOption){
                             case 1:{
                                 Menus.SignOnlineParticipantMenu();
@@ -103,7 +105,7 @@ public class Main {
                                     //PARTICIPATION CREATION AND SIGNING
                                     case 1:{
                                         //Sign online guest to event
-                                        ParticipantManager participantManager = new ParticipantManager();                                        
+                                                                               
                                         OnlineGuest onlineGuest = participantManager.CreateGuestOnline(sc);                                        
                                         Integer eventId = EventManager.CollectId(sc);
                                         boolean sucess = participantManager.addParticipantToEvent(eventId, onlineGuest);
@@ -116,7 +118,7 @@ public class Main {
                                     }
                                     case 2:{
                                         //Sign online professor to event
-                                        ParticipantManager participantManager = new ParticipantManager();                                        
+                                                                               
                                         OnlineProfessor onlineProfessor = participantManager.CreateProfessorOnline(sc);                                        
                                         Integer eventId = EventManager.CollectId(sc);
                                         boolean sucess = participantManager.addParticipantToEvent(eventId, onlineProfessor);
@@ -129,7 +131,7 @@ public class Main {
                                     }
                                     case 3:{
                                         //Sign online student to event
-                                        ParticipantManager participantManager = new ParticipantManager();                                        
+                                                                               
                                         OnlineStudent onlineStudent = participantManager.CreateStudentOnline(sc);                                        
                                         Integer eventId = EventManager.CollectId(sc);
                                         boolean sucess = participantManager.addParticipantToEvent(eventId, onlineStudent);
@@ -156,7 +158,7 @@ public class Main {
                                 switch(participantOption){
                                     case 1:{
                                         //Sign presential guest to event
-                                        ParticipantManager participantManager = new ParticipantManager();                                        
+                                                                                
                                         Guest guest = participantManager.CreateGuestPresential(sc);                                        
                                         Integer eventId = EventManager.CollectId(sc);
                                         boolean sucess = participantManager.addParticipantToEvent(eventId, guest);
@@ -169,7 +171,7 @@ public class Main {
                                     }
                                     case 2:{
                                         //Sign presential professor to event
-                                        ParticipantManager participantManager = new ParticipantManager();                                        
+                                                                                
                                         Professor professor = participantManager.CreateProfessorPresential(sc);                                        
                                         Integer eventId = EventManager.CollectId(sc);
                                         boolean sucess = participantManager.addParticipantToEvent(eventId, professor);
@@ -182,7 +184,7 @@ public class Main {
                                     }
                                     case 3:{
                                         //Sign presential student to event
-                                        ParticipantManager participantManager = new ParticipantManager();                                        
+                                                                               
                                         Student student = participantManager.CreateStudentPresential(sc);                                        
                                         Integer eventId = EventManager.CollectId(sc);
                                         boolean sucess = participantManager.addParticipantToEvent(eventId, student);
