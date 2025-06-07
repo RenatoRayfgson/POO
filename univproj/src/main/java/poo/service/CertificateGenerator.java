@@ -15,15 +15,18 @@ public class CertificateGenerator {
             return false;
         }
 
-        Participant participant = ParticipantManager.findParticipantByCPF(cpf);
-        
-        if (participant == null) {
-            System.out.println("Participant with CPF " + cpf + " not found in event " + event.getTitle() + ".");            
-            return false;
+        Participant participant = null;
+
+        for(Integer participantId : event.getParticipants()) {
+            Participant p = ParticipantManager.findParticipantById(participantId);
+            if (p != null && p.getCpf().equals(cpf)) {
+                participant = p;
+                break;
+            }
         }
 
-        if (!event.getParticipants().contains(participant.getId())) {
-            System.out.println("The participant searched: " + participant.getName() + ", CPF: " + participant.getCpf() + " is not registered in " + event.getTitle() + ".");
+        if(participant == null) {
+            System.out.println("Participant with CPF " + cpf + " not found in the event.");
             return false;
         }
 
