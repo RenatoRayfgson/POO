@@ -15,16 +15,24 @@ import poo.service.ParticipantManager;
 
 public class PDFGenerator {
     public static void Generate(Integer eventId, String cpf) {
-        Participant p = ParticipantManager.findParticipantByCPF(cpf);
         Event e = EventManager.findEventById(eventId);
-
-        if(p==null || e==null){
-            System.out.println("Participant or Event not found.");
+        
+        if(e==null){
+            System.out.println("Event not found.");
             return;
         }
+        Participant p = null;
+        
+        for(Integer participantId : e.getParticipants()){
+            Participant participant = ParticipantManager.findParticipantById(participantId);
+            if (participant != null && participant.getCpf().equals(cpf)) {
+                p = participant;
+                break;
+            }
+        }
 
-        if (!e.getParticipants().contains(p.getId())) {
-            System.out.println("The participant searched: " + p.getName() + ", CPF: " + p.getCpf() + " is not registered in " + e.getTitle() + ".");
+        if (p==null) {
+            System.out.println("No participant found with CPF: " + cpf);
             return;
         }
 
