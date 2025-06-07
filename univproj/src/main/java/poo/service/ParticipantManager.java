@@ -97,12 +97,5 @@ public class ParticipantManager {
     
     public static Integer getId() {
         return id;
-    }
-    /*public List<Participant> getParticipantsByEvent(int eventId) {
-    // encontra o evento e filtra a lista de participantes pelo ID
-    return p;
-    }*/
-
-
-    
+    }    
 }
