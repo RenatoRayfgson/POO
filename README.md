@@ -10,7 +10,7 @@ Caso queira abrir o .jar utilize:
 * mvn clean package
 * java -jar target/univproj-1.0.jar
 
-A versão de release no pom.xml é 24. Por volta da linha 31 do main, é invocado o método Utilities.initTestEvents();. Este método cria um evento de cada tipo e eu usei como testes, caso queira iniciar com 0 eventos, basta comentá-lo.
+A versão de release no pom.xml é 24.
 
 <h1 align="center"> Links </h1>
 <div id="Links">
