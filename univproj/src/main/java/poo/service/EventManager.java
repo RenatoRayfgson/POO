@@ -39,6 +39,7 @@ public class EventManager {
     public static Integer CollectId(Scanner sc) {
         System.out.println("Enter the ID of the event you want to sign the participant in: ");
         Integer inputId = sc.nextInt();
+        sc.nextLine();
         if (inputId < 1) {
             System.out.println("ID must be greater than 0.");
             return CollectId(sc);        
