@@ -100,7 +100,7 @@ public class Main {
                                 Menus.SignOnlineParticipantMenu();
                                 int participantOption = sc.nextInt();
                                 switch(participantOption){
-                                    //PARTICIPATION CRIATION AND SIGNING
+                                    //PARTICIPATION CREATION AND SIGNING
                                     case 1:{
                                         //Sign online guest to event
                                         ParticipantManager participantManager = new ParticipantManager();                                        
