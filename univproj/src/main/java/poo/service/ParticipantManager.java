@@ -80,7 +80,16 @@ public class ParticipantManager {
     public OnlineGuest CreateGuestOnline(Scanner sc){
         OnlineGuest onlineGuest = new OnlineGuest();
         return onlineGuest.collectDataOnline(id++, sc);        
-    }    
+    }
+    
+    public static Participant findParticipantByCPF(String cpf) {
+        for (Participant p : getParticipants()) {
+            if (p.getCpf().equals(cpf)) {
+                return p;
+            }
+        }
+        return null;
+    }
     
     public static Collection<Participant> getParticipants() {
         return participants.values();

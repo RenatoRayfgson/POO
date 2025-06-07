@@ -77,7 +77,5 @@ public class Utilities {
         } catch (Exception e) {
             System.out.println("Erro ao criar eventos de teste: " + e.getMessage());
         }
-    }
-
-    
+    }    
 }

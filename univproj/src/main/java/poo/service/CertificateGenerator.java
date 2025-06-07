@@ -8,42 +8,38 @@ import poo.participant.Participant;
 
 public class CertificateGenerator {
 
-    public static void generateCertificate(Integer eventId, String cpf) {        
+    public static boolean generateCertificate(Integer eventId, String cpf) {        
         Event event = EventManager.findEventById(eventId);
         if (event == null) {
             System.out.println("Event not found.");
-            return;
+            return false;
         }
 
-        Participant participant = null;
-        for(Integer participantId : event.getParticipants()){
-            for(Participant p : ParticipantManager.getParticipants()){
-                if(p.getId().equals(participantId) && p.getCpf().equals(cpf)){
-                    participant = p;
-                    break;
-                }
-            }
-            if(participant != null) {
-                break;
-            }
-        }
+        Participant participant = ParticipantManager.findParticipantByCPF(cpf);
+        
         if (participant == null) {
             System.out.println("Participant with CPF " + cpf + " not found in event " + event.getTitle() + ".");            
-            return;
+            return false;
         }
+
+        if (!event.getParticipants().contains(participant.getId())) {
+            System.out.println("The participant searched: " + participant.getName() + ", CPF: " + participant.getCpf() + " is not registered in " + event.getTitle() + ".");
+            return false;
+        }
+
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         Menus.line();
         System.out.println("Certificate of Participation");
         Menus.line();
         System.out.println("This is a certificate of participation for:");
         System.out.println("Participant: " + participant.getName() + " (ID: " + participant.getId() + " CPF: " + participant.getCpf() + ") as a " + participant.getClass().getSimpleName());
-        System.out.println("in the event: " + event.getTitle());
+        System.out.println("due the participation in the event: " + event.getTitle());
         System.out.println("That occured on: " + event.getDate().format(dtf) + " at " + event.getLocal());
         System.out.println(event.getCertificateExtraInfo());
         Menus.line();
         System.out.println("Thank you for your participation!");
         System.out.println("This certificate will also be sent to your email: " + participant.getEmail());
-        
+        return true;
     }
 
 }

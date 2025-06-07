@@ -18,3 +18,4 @@ poo\participant\OnlineProfessor.class
 poo\service\CertificateGenerator.class
 poo\participant\Guest.class
 poo\menu\Menus.class
+poo\utilities\PDFGenerator.class
