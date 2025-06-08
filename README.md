@@ -10,7 +10,7 @@ Caso queira abrir o .jar utilize:
 * mvn clean package
 * java -jar target/univproj-1.0.jar
 
-A versão de release no pom.xml é 24.
+A versão de release no pom.xml é 24, caso necessário, alterar na pom.xml para 17.
 
 <h1 align="center"> Links </h1>
 <div id="Links">
@@ -18,4 +18,5 @@ Link do projeto no github:
 https://github.com/RenatoRayfgson/POO
 
 Link do video com a execução dos comandos e do programa:
+https://youtu.be/Qm49aNt-WkU
 </div>
